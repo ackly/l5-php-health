@@ -1,0 +1,36 @@
+{
+    "name": "ackly/l5-php-health",
+    "description": "Health check for applications based on Laravel 5",
+    "type": "library",
+    "require": {
+        "php": ">=7.0.0",
+        "ackly/x-php-health": "dev-master",
+        "laravel/framework": "5.1.*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrey Stroganov",
+            "email": "a.stroganov@vsemayki.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Ackly\\L5Health\\": "src/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:ackly/x-php-health.git"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ackly\\L5Health\\HealthServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}

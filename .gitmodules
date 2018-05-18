@@ -1,0 +1,3 @@
+[submodule "vendor/ackly/x-php-health"]
+	path = vendor/ackly/x-php-health
+	url = git@github.com:ackly/x-php-health.git
