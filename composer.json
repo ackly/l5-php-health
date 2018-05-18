@@ -4,8 +4,8 @@
     "type": "library",
     "require": {
         "php": ">=7.0.0",
-        "ackly/x-php-health": "dev-master",
-        "laravel/framework": "5.1.*"
+        "ackly/x-php-health": "0.0.1",
+        "laravel/framework": "5.*"
     },
     "license": "MIT",
     "authors": [
@@ -19,12 +19,6 @@
             "Ackly\\L5Health\\": "src/"
         }
     },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "git@github.com:ackly/x-php-health.git"
-        }
-    ],
     "extra": {
         "laravel": {
             "providers": [
