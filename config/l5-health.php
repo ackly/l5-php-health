@@ -2,9 +2,10 @@
 
 return [
     /*
-     * Application name that would be returned in health check result
+     * Application name that would be returned in health check result.
+     * If this set to null or false then env('APP_NAME') will be used.
      */
-    'application_name' => 'REAL_APP_NAME',
+    'application_name' => null,
 
     /*
      * Route for accessing health check info
