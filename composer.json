@@ -5,7 +5,7 @@
     "require": {
         "php": ">=7.0.0",
         "ackly/x-php-health": ">=0.0.2",
-        "laravel/framework": ">=5.*"
+        "laravel/framework": "5.*"
     },
     "license": "MIT",
     "authors": [
