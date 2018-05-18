@@ -16,10 +16,13 @@ class HealthController extends Controller
      */
     public function index()
     {
-        $healthCheck = new \Ackly\Health\HealthCheck(config('l5-health.application_name', env('APP_NAME')));
+        $appName = config('l5-health.application_name');
+        $healthCheck = new \Ackly\Health\HealthCheck($appName ?: env('APP_NAME'));
 
         $checks = config('l5-health.checks', []);
         $runArgs = config('l5-health.run_args', []);
+
+        $healthCheck->addDependency(config('l5-health.service_dependencies', []));
 
         if (config('l5-health.check_db')) {
             $checks['db'] = \Ackly\Health\Check\DB::class;

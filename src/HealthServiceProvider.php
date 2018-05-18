@@ -33,8 +33,8 @@ class HealthServiceProvider extends ServiceProvider
             $configPath => config_path('l5-health.php'),
         ], 'config');
 
-        \Route::group(['namespace' => 'L5Health'], function($router) {
-            return __DIR__.'/routes.php';
+        \Route::group([], function($router) {
+            require __DIR__.'/routes.php';
         });
     }
 }

@@ -36,5 +36,13 @@ return [
      */
     'run_args' => [
         // 'checkName' => ['arg1' => 'value', 'arg2' => 'value']
+    ],
+
+    /*
+     * List of external service dependencies.
+     * They will be returned in health check result.
+     */
+    'service_dependencies' => [
+
     ]
 ];
