@@ -24,26 +24,19 @@ class HealthController extends Controller
 
         $healthCheck->addDependency(config('l5-health.service_dependencies', []));
 
-        if (config('l5-health.check_db')) {
-            $checks['db'] = \Ackly\Health\Check\DB::class;
-
-            $runArgs['db'] = [
-                'pdo' => \DB::connection()->getPdo()
-            ];
-        }
-
-        if (config('l5-health.check_memcache')) {
-            $checks['memcache'] = \Ackly\Health\Check\Memcache::class;
-
-            $runArgs['memcache'] = [
-                'class' => env('CACHE_DRIVER'),
-                'host' => env('MEMCACHED_HOST'),
-                'port' => env('MEMCACHED_PORT')
-            ];
-        }
-
         foreach ($checks as $name => $check) {
             $healthCheck->addCheck($name, $check);
+        }
+
+        foreach ($runArgs as $name => &$value) {
+            if (is_callable($value)) {
+                $runArgs[$name] = $value();
+            }
+
+            if (isset($value['connection'])) {
+                $value['pdo'] = \DB::connection($value['connection'])->getPdo();
+                unset($value['connection']);
+            }
         }
 
         $content = $healthCheck->run($runArgs);

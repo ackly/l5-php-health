@@ -15,19 +15,11 @@ return [
     ],
 
     /*
-     * Enables check for default database
-     */
-    'check_db' => true,
-
-    /*
-     * Enables check for default memcache
-     */
-    'check_memcache' => true,
-
-    /*
-     * List of additional checks to perform
+     * List of checks to perform
      */
     'checks' => [
+        'db' => Ackly\Health\Check\DB::class,
+        'memcache' => Ackly\Health\Check\Memcache::class,
         // 'checkName' => CheckClass::class,
     ],
 
@@ -35,6 +27,12 @@ return [
      * Argument mapping for health checks
      */
     'run_args' => [
+        'db' => function() {return ['pdo' => \DB::connection()->getPdo()];},
+        'memcache' => [
+            'class' => env('CACHE_DRIVER'),
+            'host' => env('MEMCACHED_HOST'),
+            'port' => env('MEMCACHED_PORT')
+        ],
         // 'checkName' => ['arg1' => 'value', 'arg2' => 'value']
     ],
 
