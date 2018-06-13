@@ -5,7 +5,7 @@
     "require": {
         "php": ">=7.0.0",
         "laravel/framework": "5.*",
-        "ackly/x-php-health": ">=0.0.9"
+        "ackly/x-php-health": ">=0.1.0"
     },
     "license": "MIT",
     "authors": [
@@ -19,6 +19,11 @@
             "Ackly\\L5Health\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
@@ -26,5 +31,9 @@
             ]
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "phpunit/phpunit": "^7.2"
+    }
 }
